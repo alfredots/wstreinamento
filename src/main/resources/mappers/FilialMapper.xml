@@ -5,7 +5,7 @@
     <sql id="colunasFilial">
         id,
         nome,
-        cpnj
+        cnpj
     </sql>
 
     <resultMap id="resultFilial" type="br.com.pulse.model.Filial">
@@ -17,10 +17,10 @@
     <select id="buscar" resultType="br.com.pulse.model.Filial">
         select 
             <include refid="colunasFilial"></include>
-        where id = #{filialId};
+        from filial where id = #{filialId};
     </select>
 
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="filial.id" parameterType="br.com.pulse.model.Filial">
         insert into filial
             (id, nome, cnpj)
         values (

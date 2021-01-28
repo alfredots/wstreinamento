@@ -5,7 +5,25 @@
     <resultMap id="resultPedido" type="br.com.pulse.model.PedidoEstoque">
         <id column="id" property="id" />
         <result column="tipo" property="tipo"/>
-        <association property="filial" column="filial_id" resultMap="br.com.pulse.mapper.FilialMapper.resultFilial"/>
+        <association property="filial" column="filial_id" resultMap="br.com.pulse.mapper.FilialMapper.resultFilial">
+            <id column="fi"/>
+        </association>
     </resultMap>
 
+
+    <select id="getFilial">
+        select
+        id,
+        nome,
+        cnpj
+        from filial where id = #{filialId};
+    </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" parameterType="br.com.pulse.model.PedidoEstoque">
+        insert into pedidoestoque
+        (id, tipo, filial_id)
+        values (
+        #{pedidoEstoque.id}, #{pedidoEstoque.tipo}, #{pedidoEstoque.filial.id}
+        );
+    </insert>
 </mapper>

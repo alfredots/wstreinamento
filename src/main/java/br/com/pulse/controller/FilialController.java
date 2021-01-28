@@ -26,8 +26,10 @@ public class FilialController {
     }
 
     @PostMapping
-    public void salvar(@RequestBody Filial item){
-        service.salvar(item);
+    public ResponseEntity<Filial> salvar(@RequestBody Filial item){
+        Filial filialSalva = service.salvar(item);
+
+        return ResponseEntity.ok(filialSalva);
     }
 
     @PutMapping

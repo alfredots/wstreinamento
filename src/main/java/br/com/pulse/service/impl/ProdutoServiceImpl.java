@@ -23,4 +23,9 @@ public class ProdutoServiceImpl implements ProdutoService {
     public Collection<Produto> buscarPorFilial(Long filialId) {
         return mapper.buscarPorFilial(filialId);
     }
+
+    @Override
+    public Produto buscarPorId(Long produtoId) {
+        return mapper.buscar(produtoId);
+    }
 }

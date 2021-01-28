@@ -27,10 +27,10 @@ public class ItemPedidoEstoqueController {
             return IPEstoqueDTO.builder()
                     .id(itemPedidoEstoque.getId())
                     .quantidade(itemPedidoEstoque.getQuantidade())
-                    .produtoId(itemPedidoEstoque.getProduto().getId())
+                    .produto(itemPedidoEstoque.getProduto())
                     .tipo(itemPedidoEstoque.getPedidoEstoque().getTipo())
-                    .pedidoEstoqueId(itemPedidoEstoque.getPedidoEstoque().getId())
-                    .filialId(itemPedidoEstoque.getPedidoEstoque().getFilial().getId())
+                    .pedidoEstoque(itemPedidoEstoque.getPedidoEstoque())
+                    .filial(itemPedidoEstoque.getPedidoEstoque().getFilial())
                     .build();
         }).collect(Collectors.toList());
 

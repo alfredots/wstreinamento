@@ -2,8 +2,6 @@ package br.com.pulse.model;
 
 import lombok.Data;
 
-import java.util.Collection;
-
 @Data
 public class PedidoEstoque {
 

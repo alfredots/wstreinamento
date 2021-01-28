@@ -9,4 +9,6 @@ public interface ProdutoService {
     Collection<Produto> buscarQuantidade();
 
     Collection<Produto> buscarPorFilial(Long filialId);
+
+    Produto buscarPorId(Long produtoId);
 }

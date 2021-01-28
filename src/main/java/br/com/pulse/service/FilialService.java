@@ -16,8 +16,10 @@ public class FilialService {
        return mapper.buscar(id);
     }
 
-    public void salvar(Filial filial) {
+    public Filial salvar(Filial filial) {
         mapper.insert(filial);
+
+        return mapper.buscar(filial.getId());
     }
 
     public void atualizar(Filial filial) {

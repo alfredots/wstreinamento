@@ -9,16 +9,46 @@
         i.pedido_estoque_id
     </sql>
 
+    <sql id="colunasPedidoEstoque">
+        p.filial_id,
+        p.tipo
+    </sql>
+
+    <sql id="colunasProduto">
+        pr.nome,
+        pr.quantidade
+    </sql>
+
+    <sql id="colunasFilial">
+        f.nome as fnome,
+        f.cnpj as fcnpj
+    </sql>
 
     <resultMap id="resultItem" type="br.com.pulse.model.ItemPedidoEstoque">
         <result column="id" property="id" />
         <result column="quantidade" property="quantidade"/>
-        <association property="produto" column="produto_id" resultMap="br.com.pulse.mapper.ProdutoMapper.resultProduto"/>
-        <association property="pedidoEstoque" column="pedido_estoque_id" resultMap="br.com.pulse.mapper.PedidoEstoqueMapper.resultPedido"/>
+        <association property="produto"  javaType="br.com.pulse.model.Produto">
+            <id column="produto_id" property="id" />
+            <result column="nome" property="nome"/>
+            <result column="quantidade" property="quantidade"/>
+        </association>
+        <association property="pedidoEstoque" javaType="br.com.pulse.model.PedidoEstoque">
+            <id column="pedido_estoque_id" property="id" />
+            <result column="tipo" property="tipo"/>
+            <association property="filial" javaType="br.com.pulse.model.Filial">
+                <id column="filial_id" property="id"/>
+                <result column="fnome" property="nome" />
+                <result column="fcnpj" property="cnpj" />
+            </association>
+        </association>
     </resultMap>
 
     <select id="buscarPorProduto" resultMap="resultItem">
-        select i.id, i.quantidade, i.produto_id, i.pedido_estoque_id, p.filial_id, p.tipo, pr.nome, pr.quantidade, f.nome, f.cnpj
+        select
+            <include refid="colunasPedido"/>,
+            <include refid="colunasPedidoEstoque"/>,
+            <include refid="colunasProduto"/>,
+            <include refid="colunasFilial"/>
         from itempedidoestoque i
         inner join pedidoestoque p on i.pedido_estoque_id  = p.id
         inner join produto pr on i.produto_id = pr.id

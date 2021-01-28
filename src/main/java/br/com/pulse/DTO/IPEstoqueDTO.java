@@ -14,11 +14,11 @@ public class IPEstoqueDTO {
 
     private int quantidade;
 
-    private Long produtoId;
+    private Produto produto;
 
-    private Long pedidoEstoqueId;
+    private PedidoEstoque pedidoEstoque;
 
     private String tipo;
 
-    private Long filialId;
+    private Filial filial;
 }

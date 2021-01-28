@@ -15,4 +15,6 @@ public interface ItemPedidoEstoqueMapper {
     ItemPedidoEstoque buscar(Long itemPedidoId);
 
     Collection<ItemPedidoEstoque> buscarPorProduto(Long produtoId);
+
+    void insert(ItemPedidoEstoque item);
 }

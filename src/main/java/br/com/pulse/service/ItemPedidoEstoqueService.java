@@ -8,4 +8,6 @@ import java.util.Collection;
 public interface ItemPedidoEstoqueService {
 
     Collection<ItemPedidoEstoque> buscarPorProduto(Long produtoId);
+
+    void salvar(int quantidade, Long produtoId, Long pedidoEstoqueId);
 }
