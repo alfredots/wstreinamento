@@ -3,12 +3,11 @@ package br.com.pulse.model;
 import lombok.Data;
 
 @Data
-public class Filial {
+public class Estoque {
 
     private Long id;
 
-    private String nome;
+    private Filial filial;
 
-    private String cnpj;
-
+    private Produto produto;
 }

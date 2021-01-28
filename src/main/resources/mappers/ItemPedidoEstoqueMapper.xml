@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.pulse.mapper.ItemPedidoEstoqueMapper">
+
+    <sql id="colunasPedido">
+        i.id,
+        i.quantidade,
+        i.produto_id,
+        i.pedido_estoque_id
+    </sql>
+
+
+    <resultMap id="resultItem" type="br.com.pulse.model.ItemPedidoEstoque">
+        <result column="id" property="id" />
+        <result column="quantidade" property="quantidade"/>
+        <association property="produto" column="produto_id" resultMap="br.com.pulse.mapper.ProdutoMapper.resultProduto"/>
+        <association property="pedidoEstoque" column="pedido_estoque_id" resultMap="br.com.pulse.mapper.PedidoEstoqueMapper.resultPedido"/>
+    </resultMap>
+
+    <select id="buscarPorProduto" resultMap="resultItem">
+        select i.id, i.quantidade, i.produto_id, i.pedido_estoque_id, p.filial_id, p.tipo, pr.nome, pr.quantidade, f.nome, f.cnpj
+        from itempedidoestoque i
+        inner join pedidoestoque p on i.pedido_estoque_id  = p.id
+        inner join produto pr on i.produto_id = pr.id
+        inner join filial f on p.filial_id = f.id
+        where i.produto_id = #{produtoId};
+    </select>
+</mapper>

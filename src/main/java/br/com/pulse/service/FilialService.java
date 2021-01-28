@@ -15,5 +15,16 @@ public class FilialService {
     public Filial buscar(Long id){
        return mapper.buscar(id);
     }
-    
+
+    public void salvar(Filial filial) {
+        mapper.insert(filial);
+    }
+
+    public void atualizar(Filial filial) {
+        mapper.update(filial);
+    }
+
+    public void remover(Long id) {
+        mapper.delete(id);
+    }
 }

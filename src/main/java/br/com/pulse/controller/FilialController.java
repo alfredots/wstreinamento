@@ -2,12 +2,7 @@ package br.com.pulse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.pulse.model.Filial;
 import br.com.pulse.service.FilialService;
@@ -32,9 +27,16 @@ public class FilialController {
 
     @PostMapping
     public void salvar(@RequestBody Filial item){
-
-
-
+        service.salvar(item);
     }
 
+    @PutMapping
+    public void atualizar(@RequestBody Filial item) {
+        service.atualizar(item);
+    }
+
+    @DeleteMapping
+    public void deletar(@PathVariable Long id) {
+        service.remover(id);
+    }
 }

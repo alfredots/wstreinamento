@@ -2,8 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="br.com.pulse.mapper.FilialMapper">
 
+    <sql id="colunasFilial">
+        id,
+        nome,
+        cpnj
+    </sql>
+
+    <resultMap id="resultFilial" type="br.com.pulse.model.Filial">
+        <id column="id" property="id"/>
+        <result column="nome" property="nome" />
+        <result column="cpnj" property="cpnj" />
+    </resultMap>
+
     <select id="buscar" resultType="br.com.pulse.model.Filial">
-        select id, descricao, endereco from filial where id = #{filialId};
+        select 
+            <include refid="colunasFilial"></include>
+        where id = #{filialId};
     </select>
+
+    <insert id="insert">
+        insert into filial
+            (id, nome, cnpj)
+        values (
+            #{filial.id}, #{filial.nome}, #{filial.cnpj}
+        );
+    </insert>
+
+    <update id="update">
+        UPDATE filial SET
+        nome = #{filial.nome},
+        cnpj = #{filial.cnpj}
+        WHERE id = #{filial.id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM filial where id = #{filialId};
+    </delete>
 
 </mapper>

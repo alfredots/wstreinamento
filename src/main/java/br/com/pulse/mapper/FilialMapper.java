@@ -1,6 +1,7 @@
 package br.com.pulse.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.pulse.model.Filial;
@@ -9,6 +10,11 @@ import br.com.pulse.model.Filial;
 @Repository
 public interface FilialMapper {
 
-  public Filial buscar(Long filialId);
+  Filial buscar(Long filialId);
 
+  void delete (Long filialId);
+
+  void insert(@Param("filial") Filial filial);
+
+  void update(@Param("filial") Filial filial);
 }
