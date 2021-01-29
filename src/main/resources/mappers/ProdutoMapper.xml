@@ -17,7 +17,7 @@
     <select id="buscar" resultType="br.com.pulse.model.Produto">
         select
             <include refid="colunasProduto"></include>
-        where id = #{produtoId};
+        from produto p where id = #{produtoId};
     </select>
     
     <select id="buscarPorQuantidade" resultType="br.com.pulse.model.Produto">

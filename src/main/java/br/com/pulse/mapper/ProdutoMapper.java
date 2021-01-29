@@ -12,7 +12,7 @@ public interface ProdutoMapper {
 
     Produto buscar(Long produtoId);
 
-    Collection<Produto> buscarPorQuantidade();
+    Collection<Produto> buscarPorQuantidade(int quantidade);
 
     Collection<Produto> buscarPorFilial(Long filialId);
 }

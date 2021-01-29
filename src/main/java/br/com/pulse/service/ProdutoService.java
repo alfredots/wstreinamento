@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public interface ProdutoService {
 
-    Collection<Produto> buscarQuantidade();
+    Collection<Produto> buscarQuantidade(int quantidade);
 
     Collection<Produto> buscarPorFilial(Long filialId);
 

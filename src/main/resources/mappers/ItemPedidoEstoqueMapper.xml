@@ -55,4 +55,12 @@
         inner join filial f on p.filial_id = f.id
         where i.produto_id = #{produtoId};
     </select>
+
+    <insert id="insert">
+        insert into itempedidoestoque
+        (quantidade, produto_id, pedido_estoque_id)
+        values (
+        #{item.quantidade}, #{item.produto.id}, #{item.pedidoEstoque.id}
+        );
+    </insert>
 </mapper>
