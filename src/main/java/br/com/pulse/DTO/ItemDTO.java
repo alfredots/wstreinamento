@@ -8,5 +8,4 @@ public class ItemDTO {
     Long id;
     int quantidade;
     Long produtoId;
-    Long pedidoEstoqueId;
 }

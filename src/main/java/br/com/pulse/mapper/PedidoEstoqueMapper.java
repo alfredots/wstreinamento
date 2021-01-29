@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface PedidoEstoqueMapper {
 
-    public PedidoEstoque buscar(Long pedidoEstoqueId);
+    public PedidoEstoque buscar(@Param("pedidoEstoqueId") Long pedidoEstoqueId);
 
     void insert(@Param("pedidoEstoque") PedidoEstoque pedidoEstoque);
 }

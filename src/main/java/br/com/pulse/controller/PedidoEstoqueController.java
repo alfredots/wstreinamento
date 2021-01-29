@@ -27,13 +27,12 @@ public class PedidoEstoqueController {
 
     @PostMapping
     public ResponseEntity<PedidoEstoque> salvar (@RequestBody PedidoDTO pedido) {
-        PedidoEstoque pedidoEstoque = pedido.getPedidoEstoque();
-        Long pedidoEstoqueId = service.salvar(pedidoEstoque);
+        PedidoEstoque pedidoEstoque = service.salvar(pedido.getTipo(), pedido.getFilialId());
 
-        if (pedidoEstoqueId != null) {
+        if (pedidoEstoque.getId() > 0) {
             List<ItemDTO> itens = pedido.getItems();
             itens.forEach(itemDTO -> {
-                serviceItem.salvar(itemDTO.getQuantidade(), itemDTO.getProdutoId(), itemDTO.getPedidoEstoqueId());
+                serviceItem.salvar(itemDTO.getQuantidade(), itemDTO.getProdutoId(), pedidoEstoque);
             });
         }
         return  ResponseEntity.ok(pedidoEstoque);

@@ -9,7 +9,8 @@ import java.util.List;
 @Data
 public class PedidoDTO {
 
-    PedidoEstoque pedidoEstoque;
+    String tipo;
+    Long filialId;
 
     List<ItemDTO> items;
 }

@@ -28,11 +28,10 @@ public class ItemPedidoEstoqueServiceImpl implements ItemPedidoEstoqueService {
     }
 
     @Override
-    public void salvar(int quantidade, Long produtoId, Long pedidoEstoqueId) {
+    public void salvar(int quantidade, Long produtoId, PedidoEstoque pedidoEstoque) {
         Produto produto = produtoService.buscarPorId(produtoId);
-        PedidoEstoque pedido = pedidoEstoqueService.buscarPorId(pedidoEstoqueId);
         ItemPedidoEstoque item = ItemPedidoEstoque.builder()
-                .pedidoEstoque(pedido)
+                .pedidoEstoque(pedidoEstoque)
                 .produto(produto)
                 .quantidade(quantidade)
                 .build();
